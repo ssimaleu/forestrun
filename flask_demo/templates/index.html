@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hands-on 1</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
             background:
@@ -12,14 +15,42 @@
                 linear-gradient(155deg, #2b5540 0%, #1e3d2b 55%, #162d20 100%);
             color: #2f3d31;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
         }
+
+        /* ---------- Forest banner ---------- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 18px 40px rgba(10, 26, 17, 0.35);
+        }
+        .hero svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .mist {
+            animation: drift 18s linear infinite alternate;
+        }
+        @keyframes drift {
+            from { transform: translateX(-28px); }
+            to   { transform: translateX(28px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .mist { animation: none; }
+        }
+
+        /* ---------- Content card ---------- */
         .card {
             background: linear-gradient(180deg, #fdfbf3 0%, #f6f3e6 100%);
             padding: 3.25rem 4.25rem;
+            margin: auto 1.25rem;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow:
@@ -65,6 +96,78 @@
     </style>
 </head>
 <body>
+    <header class="hero" role="img" aria-label="A misty forest at dawn">
+        <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#e2efde"/>
+                    <stop offset="55%" stop-color="#c8dfc9"/>
+                    <stop offset="100%" stop-color="#a9c9ae"/>
+                </linearGradient>
+                <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3f7050"/>
+                    <stop offset="100%" stop-color="#22402b"/>
+                </linearGradient>
+                <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#fff8dd" stop-opacity="0.95"/>
+                    <stop offset="100%" stop-color="#fff8dd" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="mistFade" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+                    <stop offset="25%" stop-color="#ffffff" stop-opacity="0.35"/>
+                    <stop offset="75%" stop-color="#ffffff" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+
+            <!-- sky + low sun -->
+            <rect width="1200" height="300" fill="url(#sky)"/>
+            <circle cx="905" cy="78" r="135" fill="url(#sun)"/>
+
+            <!-- far ridge -->
+            <path d="M0 176 L130 132 L250 176 L380 126 L510 176 L640 140 L780 182 L910 134 L1050 176 L1200 142 L1200 300 L0 300 Z"
+                  fill="#93bda1" opacity="0.7"/>
+
+            <!-- distant pine row -->
+            <g fill="#6d9e80" opacity="0.9">
+                <path d="M120 202 l30 -70 l30 70 z"/>
+                <path d="M205 208 l24 -56 l24 56 z"/>
+                <path d="M280 200 l34 -78 l34 78 z"/>
+                <path d="M660 206 l28 -64 l28 64 z"/>
+                <path d="M735 200 l36 -80 l36 80 z"/>
+                <path d="M830 208 l24 -54 l24 54 z"/>
+                <path d="M950 202 l30 -68 l30 68 z"/>
+                <path d="M1040 210 l22 -50 l22 50 z"/>
+            </g>
+
+            <!-- mist band -->
+            <ellipse class="mist" cx="600" cy="222" rx="640" ry="22" fill="url(#mistFade)"/>
+
+            <!-- near pines -->
+            <g fill="#2f5d3f">
+                <path d="M40 246 l52 -120 l52 120 z"/>
+                <path d="M40 206 l52 -84 l52 84 z" fill="#376b49"/>
+                <path d="M158 250 l40 -92 l40 92 z"/>
+                <path d="M1096 250 l58 -132 l58 132 z"/>
+                <path d="M1096 204 l58 -92 l58 92 z" fill="#376b49"/>
+                <path d="M1012 252 l42 -96 l42 96 z"/>
+            </g>
+
+            <!-- ground -->
+            <path d="M0 232 C 200 212, 420 250, 600 238 C 800 226, 980 250, 1200 230 L1200 300 L0 300 Z"
+                  fill="url(#ground)"/>
+
+            <!-- foreground grass -->
+            <g stroke="#7aa87f" stroke-width="3" stroke-linecap="round" opacity="0.65">
+                <path d="M186 284 l-5 -14"/>
+                <path d="M196 287 l3 -16"/>
+                <path d="M978 280 l-6 -15"/>
+                <path d="M990 285 l4 -17"/>
+                <path d="M420 292 l-4 -12"/>
+            </g>
+        </svg>
+    </header>
+
     <div class="card">
         <h1>{{ title }}</h1>
         <p>Hello, this is a web app deployed at a local server!</p>
