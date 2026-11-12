@@ -48,6 +48,16 @@
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50%      { transform: translateY(-9px) rotate(6deg); }
         }
+        .sparkle {
+            animation: twinkle 1.8s ease-in-out infinite;
+        }
+        .sparkle.s2 { animation-delay: 0.6s; }
+        .sparkle.s3 { animation-delay: 1.2s; }
+        .sparkle.s4 { animation-delay: 0.9s; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.15; }
+            50%      { opacity: 0.95; }
+        }
         @keyframes drift {
             from { transform: translateX(-28px); }
             to   { transform: translateX(28px); }
@@ -58,7 +68,8 @@
             53%      { transform: translateY(-3px); }
         }
         @media (prefers-reduced-motion: reduce) {
-            .mist, .goat, .candy { animation: none; }
+            .mist, .goat, .candy, .sparkle { animation: none; }
+            .sparkle { opacity: 0.7; }
         }
 
         /* ---------- Content card ---------- */
@@ -127,6 +138,10 @@
                     <stop offset="0%" stop-color="#fff8dd" stop-opacity="0.95"/>
                     <stop offset="100%" stop-color="#fff8dd" stop-opacity="0"/>
                 </radialGradient>
+                <linearGradient id="cloudPink" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffd9ec"/>
+                    <stop offset="100%" stop-color="#f19ec4"/>
+                </linearGradient>
                 <linearGradient id="mistFade" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
                     <stop offset="25%" stop-color="#ffffff" stop-opacity="0.35"/>
@@ -152,6 +167,29 @@
                     <path d="M7 -12.5 q8 12.5 0 25" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round"/>
                     <!-- shine -->
                     <ellipse cx="-7" cy="-5" rx="6" ry="3" fill="#ffffff" opacity="0.6" transform="rotate(-22 -7 -5)"/>
+                </g>
+            </g>
+
+            <!-- glittery pink cloud -->
+            <g transform="translate(600 62)">
+                <g fill="url(#cloudPink)">
+                    <ellipse cx="-34" cy="8" rx="30" ry="16"/>
+                    <ellipse cx="36" cy="8" rx="32" ry="16"/>
+                    <ellipse cx="0" cy="-4" rx="40" ry="22"/>
+                    <ellipse cx="0" cy="12" rx="58" ry="14"/>
+                </g>
+                <!-- glitter sparkles -->
+                <g fill="#ffffff">
+                    <path class="sparkle" transform="translate(-30 -10) scale(1.1)"
+                          d="M0 -4 L1 -1 L4 0 L1 1 L0 4 L-1 1 L-4 0 L-1 -1 Z"/>
+                    <path class="sparkle s2" transform="translate(8 -16) scale(0.8)"
+                          d="M0 -4 L1 -1 L4 0 L1 1 L0 4 L-1 1 L-4 0 L-1 -1 Z"/>
+                    <path class="sparkle s3" transform="translate(34 -2) scale(1.2)"
+                          d="M0 -4 L1 -1 L4 0 L1 1 L0 4 L-1 1 L-4 0 L-1 -1 Z"/>
+                    <path class="sparkle s4" transform="translate(-8 8) scale(0.7)"
+                          d="M0 -4 L1 -1 L4 0 L1 1 L0 4 L-1 1 L-4 0 L-1 -1 Z"/>
+                    <path class="sparkle s2" transform="translate(22 14) scale(0.9)"
+                          d="M0 -4 L1 -1 L4 0 L1 1 L0 4 L-1 1 L-4 0 L-1 -1 Z"/>
                 </g>
             </g>
 
