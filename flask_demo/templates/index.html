@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hands-on 1</title>
+    <style>
+        body {
+            font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+            background:
+                radial-gradient(circle at 20% 15%, #3b6b4a 0%, transparent 55%),
+                linear-gradient(155deg, #2b5540 0%, #1e3d2b 55%, #162d20 100%);
+            color: #2f3d31;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: linear-gradient(180deg, #fdfbf3 0%, #f6f3e6 100%);
+            padding: 3.25rem 4.25rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 22px 48px rgba(10, 26, 17, 0.45),
+                0 2px 0 rgba(255, 255, 255, 0.7) inset;
+            text-align: center;
+            max-width: 90vw;
+        }
+        h1 {
+            margin: 0 0 1.15rem;
+            color: #2f5d3f;
+            font-size: 2rem;
+            letter-spacing: 0.4px;
+        }
+        h1::after {
+            content: "";
+            display: block;
+            width: 56px;
+            height: 3px;
+            margin: 1rem auto 0;
+            border-radius: 2px;
+            background: linear-gradient(90deg, transparent, #6d9c76, transparent);
+        }
+        p {
+            font-size: 1.12rem;
+            line-height: 1.7;
+            color: #46564a;
+            margin: 0;
+        }
+        .student-id {
+            margin-top: 1.75rem;
+            padding-top: 1.35rem;
+            border-top: 1px dashed #cfd9c8;
+            font-size: 1rem;
+            color: #6b7a68;
+            letter-spacing: 0.3px;
+        }
+        .student-id strong {
+            color: #2f5d3f;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>{{ title }}</h1>
+        <p>Hello, this is a web app deployed at a local server!</p>
+        <p class="student-id">Student ID: <strong>{{ student_id }}</strong></p>
+    </div>
+</body>
+</html>
