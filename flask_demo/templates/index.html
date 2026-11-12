@@ -41,6 +41,13 @@
         .goat {
             animation: graze 5.5s ease-in-out infinite;
         }
+        .candy {
+            animation: bob 4s ease-in-out infinite;
+        }
+        @keyframes bob {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50%      { transform: translateY(-9px) rotate(6deg); }
+        }
         @keyframes drift {
             from { transform: translateX(-28px); }
             to   { transform: translateX(28px); }
@@ -51,7 +58,7 @@
             53%      { transform: translateY(-3px); }
         }
         @media (prefers-reduced-motion: reduce) {
-            .mist, .goat { animation: none; }
+            .mist, .goat, .candy { animation: none; }
         }
 
         /* ---------- Content card ---------- */
@@ -131,6 +138,22 @@
             <!-- sky + low sun -->
             <rect width="1200" height="300" fill="url(#sky)"/>
             <circle cx="905" cy="78" r="135" fill="url(#sun)"/>
+
+            <!-- candy floating in the sky -->
+            <g transform="translate(330 72)">
+                <g class="candy">
+                    <!-- wrapper twists -->
+                    <path d="M-31 0 L-17 -8 L-17 8 Z" fill="#e56b90"/>
+                    <path d="M31 0 L17 -8 L17 8 Z" fill="#e56b90"/>
+                    <!-- candy body -->
+                    <ellipse cx="0" cy="0" rx="20" ry="13" fill="#f9a8c0"/>
+                    <!-- stripes -->
+                    <path d="M-9 -12 q7 12 0 24" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <path d="M7 -12.5 q8 12.5 0 25" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <!-- shine -->
+                    <ellipse cx="-7" cy="-5" rx="6" ry="3" fill="#ffffff" opacity="0.6" transform="rotate(-22 -7 -5)"/>
+                </g>
+            </g>
 
             <!-- far ridge -->
             <path d="M0 176 L130 132 L250 176 L380 126 L510 176 L640 140 L780 182 L910 134 L1050 176 L1200 142 L1200 300 L0 300 Z"
